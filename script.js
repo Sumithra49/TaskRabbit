@@ -1,8 +1,10 @@
 const users = {};
 const secret = "masai";
+
 function createToken(username) {
-  return btoa(JSON.stringify({ username, exp: Date.now() + 6000 }));
+  return btoa(JSON.stringify({ username, exp: Date.now() + 60000 }));
 }
+
 function validateToken(token) {
   try {
     const payload = JSON.parse(atob(token));
@@ -11,6 +13,7 @@ function validateToken(token) {
     return false;
   }
 }
+
 document
   .getElementById("registerForm")
   .addEventListener("submit", function (event) {
@@ -25,6 +28,7 @@ document
     users[username] = password;
     alert("Registration Successful");
   });
+
 document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
@@ -39,6 +43,7 @@ document
     localStorage.setItem("token", token);
     alert("Login Successful");
   });
+
 document
   .getElementById("accessProtected")
   .addEventListener("click", function () {
@@ -50,7 +55,6 @@ document
     document.getElementById("protectedMessage").innerText = "Access Granted";
   });
 
-//upload images
 document
   .getElementById("uploadForm")
   .addEventListener("submit", function (event) {
@@ -58,7 +62,7 @@ document
     const fileInput = document.getElementById("fileInput");
     const file = fileInput.files[0];
     if (file.size > 5 * 1024 * 1024) {
-      alert("File size exceed 5 MB");
+      alert("File size exceeds 5 MB");
       return;
     }
     const formData = new FormData();
@@ -72,20 +76,18 @@ document
         alert("Image uploaded successfully");
       })
       .catch((error) => console.error("Error:", error));
-    alert("Upload failed");
   });
 
-//tasklist
 document.addEventListener("DOMContentLoaded", () => {
   loadTasks();
   document
     .getElementById("taskForm")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-
       addTask();
     });
 });
+
 function loadTasks() {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const taskList = document.getElementById("taskList");
@@ -110,6 +112,7 @@ function addTask() {
   taskInput.value = "";
   loadTasks();
 }
+
 function editTask(index) {
   const tasks = JSON.parse(localStorage.getItem("tasks"));
   const newText = prompt("Edit task:", tasks[index].text);
