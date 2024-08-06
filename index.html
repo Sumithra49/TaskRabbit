@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>TaskRabbit Mini App</h1>
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" placeholder="username" id="username" />
+
+      <input type="email" placeholder="email" id="email" />
+
+      <input type="password" placeholder="password" id="password" />
+      <button type="submit">Register</button>
+    </form>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" placeholder="username" id="loginUsername" />
+
+      <input type="password" placeholder="password" id="loginPassword" />
+      <button type="submit">Login</button>
+    </form>
+    <h2>Protected</h2>
+    <button id="accessProtected">Access Protected Resource</button>
+    <p id="ProtectedMessage"></p>
+
+    <h1>Upload Images</h1>
+    <form id="uploadForm">
+      <input type="file" id="fileInput" accept="image/*" required />
+      <button type="submit">Upload</button>
+      <p id="'status"></p>
+    </form>
+
+    <div class="'task-container">
+      <h1>Task Management</h1>
+      <forn id="taskForm">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="enter new task"
+          required
+        />
+        <button type="submit">Add Task</button>
+      </forn>
+      <div id="taskList"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
